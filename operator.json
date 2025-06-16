@@ -22,7 +22,7 @@
       "kind": "DoubleProperty",
       "name": "fcMax",
       "defaultValue": 1.3,
-      "description": "Maximum allowable increase relative to presumed ’good’ data"
+      "description": "Maximum allowable increase relative to presumed ‘good’ data"
     },
     {
       "kind": "DoubleProperty",
@@ -40,7 +40,7 @@
       "kind": "DoubleProperty",
       "name": "cutoff",
       "defaultValue": 10,
-      "description": "Method for determining threshold for parameter.  Can be \"median\" (default) or in [0, 1], which is interpreted as a percentile. Integers > 1 will be interpreted as the fluorescence value to be used for a threshold. Default (10) translates to median"
+      "description": "Method for determining threshold for parameter.  Can be \"median\" (default) or in [0, 1], which is interpreted as a percentile. Integers >1 will be interpreted as the fluorescence value to be used for a threshold. Default (10) translates to median"
     },
     {
       "kind": "BooleanProperty",
@@ -48,5 +48,54 @@
       "defaultValue": false,
       "description": "bypass the event number limitation (unadvised)"
     }
-  ]
+  ],
+  "operatorSpec": {
+    "kind": "OperatorSpec",
+    "ontologyUri": "https://tercen.com/_ontology/tercen",
+    "ontologyVersion": "0.0.1",
+    "inputSpecs": [
+      {
+        "kind": "CrosstabSpec",
+        "metaFactors": [
+          {
+            "kind": "MetaFactor",
+            "name": "Variables",
+            "type": "",
+            "description": "Represents the variables (e.g., channels, markers)",
+            "ontologyMapping": "variable",
+            "crosstabMapping": "row",
+            "cardinality": "1..n",
+            "factors": []
+          },
+          {
+            "kind": "MetaFactor",
+            "name": "Observations",
+            "type": "",
+            "description": "Represents the observations (Use Time on top of RowID)",
+            "ontologyMapping": "observation",
+            "crosstabMapping": "column",
+            "cardinality": "1..n",
+            "factors": []
+          }
+        ],
+        "axis": [
+          {
+            "kind": "AxisSpec",
+            "metaFactors": [
+              {
+                "kind": "MetaFactor",
+                "name": "Measurement",
+                "type": "numeric",
+                "description": "Measurement value",
+                "ontologyMapping": "measurement",
+                "crosstabMapping": "y",
+                "cardinality": "1",
+                "factors": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
