@@ -22,7 +22,7 @@
       "kind": "DoubleProperty",
       "name": "fcMax",
       "defaultValue": 1.3,
-      "description": "Maximum allowable increase relative to presumed ‘good’ data"
+      "description": "Maximum allowable increase relative to presumed \u2018good\u2019 data"
     },
     {
       "kind": "DoubleProperty",
@@ -93,6 +93,36 @@
                 "factors": []
               }
             ]
+          }
+        ]
+      }
+    ],
+    "outputSpecsV2": [
+      {
+        "kind": "OperatorJoinSpec",
+        "joinOperators": [
+          {
+            "kind": "JoinOperator",
+            "joinType": "left",
+            "leftPair": {
+              "kind": "ColumnPair",
+              "lColumns": [
+                "Observations"
+              ],
+              "rColumns": [
+                "Observations"
+              ]
+            },
+            "rightRelation": {
+              "kind": "TableRelation",
+              "attributes": [
+                {
+                  "kind": "Attribute",
+                  "name": "QC_flag",
+                  "type": "string"
+                }
+              ]
+            }
           }
         ]
       }
